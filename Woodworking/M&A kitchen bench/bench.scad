@@ -90,24 +90,16 @@ module Bench() {
     34x34(bench_width);
 
     // legs
-    nbr_of_legs = 3;
-    for (i=[0:nbr_of_legs - 1]) {
-      translate([0, ((bench_width - plywood_thickness) / (nbr_of_legs-1)) * i, 0]) {
-        // translate([depth - 34, 34, 0]) 
-        // Rotate([90, 0, 0]) 
-        // 34x34(bench_height - bench_top_thickness);
+    translate([0, 0, 0])
+    Cube(depth, plywood_thickness, bench_height - bench_top_thickness);
 
-        // translate([34, 34, bench_height - 34 - bench_top_thickness]) 
-        // Rotate([0, 0, -90]) 
-        // 34x34(depth - 34*2);
+    translate([0, bench_width/2 - plywood_thickness/2, 0])
+    Cube(depth, plywood_thickness, bench_height - bench_top_thickness);
+    translate([0, bench_width/2 + plywood_thickness/2, 0])
+    Cube(depth, plywood_thickness, bench_height - bench_top_thickness);
 
-        Cube(depth, plywood_thickness, bench_height - bench_top_thickness);
-      }
-    }
-
-    // lådor
-    translate([0, 0, 16]) 
-    Cube(0, 0, bench_height - 16*2 - bench_top_thickness);
+    translate([0, bench_width - plywood_thickness, 0])
+    Cube(depth, plywood_thickness, bench_height - bench_top_thickness);
   }
 }
 
